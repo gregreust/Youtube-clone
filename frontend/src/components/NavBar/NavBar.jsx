@@ -12,7 +12,12 @@ const Navbar = () => {
       <ul>
         <li className="brand">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <b>{`NotYouTube  -  ${user.username}`}</b>
+            try{
+              <b>{`NotYouTube  -  ${user.username}`}</b>
+            }
+            catch (error) {
+              <b>{`NotYouTube  -  Public`}</b>
+            }
           </Link>
         </li>
         <li>
