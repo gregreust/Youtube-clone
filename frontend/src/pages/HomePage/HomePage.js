@@ -2,8 +2,9 @@ import React, { useEffect, useState }from "react";
 import useAuth from "../../hooks/useAuth";
 import SearchBar from "../../components/SearchBar";
 import { Link } from 'react-router-dom';
-
+import {KEY} from '../../localKey';
 import {VIDEO_DATA} from '../../localData';
+
 import axios from "axios";
 
 const HomePage = () => {
@@ -14,21 +15,20 @@ const HomePage = () => {
   const [videoList, setVideoList] = useState(VIDEO_DATA.items);
   const [searchInput, setSearchInput] = useState("dogs");
 
-  // useEffect(() => 
-  //   const fetchCars = async () => {
-  //     try {
-  //       let response = await axios.get("http://127.0.0.1:8000/api/cars/", {
-  //         headers: {
-  //           Authorization: "Bearer " + token,
-  //         },
-  //       });
-  //       setCars(response.data);
-  //     } catch (error) {
-  //       console.log(error.response.data);
-  //     }
-  //   };
-  //   fetchCars();
-  // }, [token]);
+  useEffect(() => {    
+    const fetchVideos = async () => {
+      try {
+        let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchInput}&key=${KEY}&part=snippet&maxResults=10`);
+ 
+        setVideoList(response.data.items);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchVideos();
+  },[]);
+
+
   return (
     <div className="container">
       <h1>Home Page for {user.username}!</h1>
