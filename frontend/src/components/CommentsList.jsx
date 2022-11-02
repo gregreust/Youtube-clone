@@ -4,10 +4,29 @@ import axios from 'axios';
 
 const CommentsList = () => {
 
+
+    //const [user, token] = useAuth();
     const {id} = useParams();
     const [comments, setComments] = useState();
 
     // useEffect get all comments associated with videoId from backend 
+
+
+    // useEffect(() => 
+  //   const fetchCars = async () => {
+  //     try {
+  //       let response = await axios.get("http://127.0.0.1:8000/api/cars/", {
+  //         headers: {
+  //           Authorization: "Bearer " + token,
+  //         },
+  //       });
+  //       setCars(response.data);
+  //     } catch (error) {
+  //       console.log(error.response.data);
+  //     }
+  //   };
+  //   fetchCars();
+  // }, [token]);
     useEffect(() => {
         console.log(id);
         const fetchComments = async () => {

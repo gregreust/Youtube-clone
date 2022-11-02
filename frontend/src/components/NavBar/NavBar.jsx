@@ -12,15 +12,7 @@ const Navbar = () => {
       <ul>
         <li className="brand">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            {(() => {
-                if (user){
-                  return <b>{`NotYouTube  -  ${user.username}`}</b>;
-                }
-                else {
-                  return <b>{`NotYouTube  -  Public`}</b>;
-                }
-            })}
-            
+              <b>{`NotYouTube  -  ${user.username}`}</b>
           </Link>
         </li>
         <li>
