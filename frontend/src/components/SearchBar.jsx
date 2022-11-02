@@ -8,7 +8,7 @@ const  SearchBar = ({getSearchInput}) => {
     return ( 
         <form class="search-bar">
             <input type="text" value={input} onChange={(event) => setInput(event.target.value)}>Search</input>
-            <input type="submit" onClick={getSearchInput(input)} />
+            <input type="submit" onClick={() => getSearchInput(input)} />
         </form>
      );
 }
