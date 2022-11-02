@@ -21,7 +21,7 @@ const PublicHomePage = () => {
 
     return ( 
         <div className="HomePage">
-            <SearchBar searchInputInfo={getSearchInput}/>
+            {/* <SearchBar searchInputInfo={getSearchInput}/> */}
             <div class="video-list">
                 <ul>
                     {videosList.map((video, index) => {
