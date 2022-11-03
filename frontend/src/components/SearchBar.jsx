@@ -3,17 +3,19 @@ import React, {useState} from 'react';
 
 const  SearchBar = ({getSearchInput}) => {
 
-    const [input, setInput] = useState("");
+    const [searchInput, setSearchInput] = useState("");
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        getSearchInput(input)
+        getSearchInput(searchInput);
     }
     return ( 
-        <form class="search-bar" onSubmit={handleSubmit}>
-            <input type="text" value={input} onChange={(event) => setInput(event.target.value)}>Search</input>
-            <button type="submit"  />
-        </form>
+        <div className="search-bar">
+            <form onSubmit={(event) => handleSubmit(event)}>
+                <input type="text" value={searchInput} onChange={(event) => setSearchInput(event.target.value)}/>
+                <input type="submit"/>
+            </form>
+        </div>
      );
 }
  
