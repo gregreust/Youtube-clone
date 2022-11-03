@@ -31,7 +31,7 @@ const CommentsList = () => {
         console.log(id);
         const fetchComments = async () => {
             try {
-                let response = await axios.get(`http://127.0.0.1:8000/api/comments/${id}`);
+                let response = await axios.get(`http://127.0.0.1:8000/api/comments/${id}/`);
                 setComments(response.data);
             } catch (error) {
                 console.log(error);
