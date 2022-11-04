@@ -2,13 +2,18 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
-const Comment = () => {
+const Comment = ({fetchComments}) => {
 
     const comment = useLocation();
 
-    function handleLike = async () => {
+    const handleLike = async () => {
         let likedComment = {...comment, likes:comment.likes+1};
-        await axios.put(``)
+        await axios.put(`http://127.0.0.1:8000/api/comments/`, likedComment).then(()=>{fetchComments()});
+    }
+
+    const handleDislike = async () => {
+        let dislikedComment = {...comment, dislikes:comment.dislikes+1};
+        await axios.put(`http://127.0.0.1:8000/api/comments/`, dislikedComment).then(()=>{fetchComments()});
     }
 
     return ( 
