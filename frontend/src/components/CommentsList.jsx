@@ -32,7 +32,7 @@ const CommentsList = () => {
   // }, [token]);
     useEffect(() => {
         fetchComments();
-    }, [comments])
+    }, [])
 
     const fetchComments = async () => {
         try {
@@ -52,12 +52,12 @@ const CommentsList = () => {
         }
 
         try {
-            await axios.post("http://127.0.0.1:8000/api/comments/", {
-                headers: {
+            await axios.post("http://127.0.0.1:8000/api/comments/", 
+            newCommentObject,
+            {headers: {
                     Authorization: "Bearer " + token,
-                },
-                //HOW TO FORMAT POST BODY (NEWCOMMENTOBJECT) HERE? 
-            });
+                }
+            }).then(fetchComments());
             } catch (error) {
                 console.log(error);
             }
@@ -77,18 +77,7 @@ const CommentsList = () => {
                     {comments&&comments.map((comment) => {
                         return (
                             <li>
-                                <div>
-                                    {comment.user.username}
-                                </div>
-                                <div>
-                                    {comment.text}
-                                </div>
-                                <div>
-                                    {comment.likes}
-                                </div>
-                                <div>
-                                    {comment.dislikes}
-                                </div>
+                                <Comment state={comment} fetchComments={fetchComments}/>
                             </li>
 
                         );
