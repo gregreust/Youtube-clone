@@ -28,9 +28,9 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route path="/:id" element={<VideoPage/>}></Route>
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/:id" element={<VideoPage/>}></Route>
       </Routes>
       <Footer />
     </div>

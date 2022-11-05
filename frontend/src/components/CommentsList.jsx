@@ -1,38 +1,20 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import {useAuth} from '../hooks/useAuth';
+import useAuth from '../hooks/useAuth';
 import axios from 'axios';
+import Comment from './Comment'
 
 const CommentsList = () => {
 
-
-    //const [user, token] = useAuth();
     const {id} = useParams();
     const [user, token] = useAuth();
     const [comments, setComments] = useState();
     const [newComment, setNewComment] = useState();
 
-    // useEffect get all comments associated with videoId from backend 
-
-
-    // useEffect(() => 
-  //   const fetchCars = async () => {
-  //     try {
-  //       let response = await axios.get("http://127.0.0.1:8000/api/cars/", {
-  //         headers: {
-  //           Authorization: "Bearer " + token,
-  //         },
-  //       });
-  //       setCars(response.data);
-  //     } catch (error) {
-  //       console.log(error.response.data);
-  //     }
-  //   };
-  //   fetchCars();
-  // }, [token]);
+    //useEffect get all comments associated with videoId from backend 
     useEffect(() => {
         fetchComments();
-    }, [])
+    })
 
     const fetchComments = async () => {
         try {
@@ -63,27 +45,27 @@ const CommentsList = () => {
             }
     }
 
-    return ( 
-        <><h3>Comments</h3>
-            <div className="comment-list">
-                <form className="post-comment" onSubmit={(event) => handleCommentSubmit(event)}>
-                    <label>
-                        Post a comment
-                        <input type="text" value={newComment} onChange={(event) => setNewComment(event.target.value)}/>
-                        <button type="submit">Post</button>
-                    </label>
-                </form>
-                <ul>
-                    {comments&&comments.map((comment) => {
-                        return (
-                            <li>
-                                <Comment state={comment} fetchComments={fetchComments}/>
-                            </li>
+    return (
+        <div className="comment-list">
+            <h3>Comments</h3>
+            <form className="post-comment" onSubmit={(event) => handleCommentSubmit(event)}>
+                <label>
+                    Post a comment
+                    <input type="text" value={newComment} onChange={(event) => setNewComment(event.target.value)}/>
+                    <input type="submit"/>
+                </label>
+            </form>
+            <ul>
+                {comments&&comments.map((comment) => {
+                    return (
+                        <li>
+                            <Comment state={comment} fetchComments={fetchComments}/>
+                        </li>
 
-                        );
-                    })}
-                </ul>
-            </div></>
+                    );
+                })}
+            </ul>
+        </div>
 
      );
 }
