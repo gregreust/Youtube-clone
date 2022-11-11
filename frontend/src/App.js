@@ -1,6 +1,10 @@
 // General Imports
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import useAuth from './hooks/useAuth';
+
 
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
@@ -16,6 +20,26 @@ import Footer from "./components/Footer/Footer";
 import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
+  const [user, token] = useAuth();
+
+  const [comments, setComments] = useState([]);
+  // fetch all comments test
+  const fetchComments = async () => {
+    try {
+        let response = await axios.get(`http://127.0.0.1:8000/api/comments/`,{headers: {
+          Authorization: "Bearer " + token,
+      }
+  });
+        setComments(response.data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+  useEffect(() => {
+    fetchComments();
+  }, [])
+
   return (
     <div>
       <Navbar />

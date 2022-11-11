@@ -1,10 +1,12 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+import useAuth from '../hooks/useAuth';
 
-const Comment = ({fetchComments}) => {
+const Comment = ({fetchComments, comment}) => {
 
-    const comment = useLocation();
+    // const comment = useLocation();
+    const [user, token] = useAuth();
 
     const handleLike = async () => {
         let likedComment = {...comment, likes:comment.likes+1};
