@@ -56,3 +56,48 @@ button:hover {
   padding: 3px 7px;
   font-size: 17px;
 }
+
+.search-bar{
+  height: 40px;
+}
+
+.search-bar form {
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bar input{
+  margin-inline: 6px;
+  margin-top: 2px;
+  height: 40px;
+  font-size: 18pt;
+}
+
+.search-bar button {
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background: #ccc;
+}
+
+.video-list ul {
+  display:flex;
+  flex-direction: column;
+}
+
+.video-list li {
+  display:flex;
+  flex-direction: column;
+  text-align: left;
+  margin-top: 2rem;
+}
+
+.video-list li img {
+  width: 300px;
+}

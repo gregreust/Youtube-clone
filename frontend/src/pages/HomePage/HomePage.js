@@ -2,7 +2,7 @@ import React, { useEffect, useState }from "react";
 import useAuth from "../../hooks/useAuth";
 import SearchBar from "../../components/SearchBar";
 import { Link } from 'react-router-dom';
-import {KEY, BACKUP_JAMES_KEY} from '../../localKey';
+import {KEY} from '../../localKey';
 
 import axios from "axios";
 
@@ -35,9 +35,8 @@ const HomePage = () => {
 
   return (
     <div className="container">
-      <h1>Home Page for {user.username}!</h1>
       <SearchBar getSearchInput={getSearchInput}/>  
-      <div class="video-list">
+      <div className="video-list">
         {console.log(videoList)}
         <ul>
           {videoList&&videoList.map((video, index) => {

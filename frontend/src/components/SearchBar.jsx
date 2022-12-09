@@ -11,9 +11,9 @@ const  SearchBar = ({getSearchInput}) => {
     }
     return ( 
         <div className="search-bar">
-            <form onSubmit={(event) => handleSubmit(event)}>
-                <input type="text" value={searchInput} onChange={(event) => setSearchInput(event.target.value)}/>
-                <input type="submit"/>
+            <form>
+                <input type="text" placeholder="Search..." value={searchInput} onChange={(event) => setSearchInput(event.target.value)}/>
+                <button onClick={(event) => handleSubmit(event)}><i class="fa fa-search"></i></button>
             </form>
         </div>
      );

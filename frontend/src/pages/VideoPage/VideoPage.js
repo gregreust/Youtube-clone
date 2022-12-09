@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import CommentsList from '../../components/CommentsList';
+import CommentsList from '../../components/CommentsList/CommentsList';
+import './VideoPage.css';
 
 
 

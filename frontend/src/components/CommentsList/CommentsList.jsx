@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 import axios from "axios";
-import Comment from "./Comment";
+import Comment from "../Comment";
+import './CommentsList.css';
 
 const CommentsList = () => {
   const { id } = useParams();
@@ -62,14 +63,12 @@ const CommentsList = () => {
         className="post-comment"
         onSubmit={(event) => handleCommentSubmit(event)}
       >
-        <label>
-          Post a comment
-          <input
-            type="text"
-            value={newComment}
-            onChange={(event) => setNewComment(event.target.value)}
-          />
-        </label>
+        <textarea
+          value={newComment}
+          placeholder="Post a comment..."
+          rows="3"
+          onChange={(event) => setNewComment(event.target.value)}
+        />
         <input type="submit" />
       </form>
       <ul>
