@@ -34,12 +34,20 @@ def video_comments(request, video_id):
     serializer = CommentsSerializer(comments, many=True)
     return Response(serializer.data)
 
-#endpoint to like or dislike a comment FINISH THIS
-@api_view(['PUT'])
-@permission_classes([IsAuthenticated])
-def get_one_comment(request, comment_id, like_or_dislike):
-    like_or_dislike_param = request.query_params.get('like_or_dislike') 
-    comment = get_object_or_404(Comments)
+#endpoint to like or dislike a comment
+@api_view(['GET', 'PUT'])
+@permission_classes([AllowAny])
+def get_one_comment(request, comment_id):
+    comment = get_object_or_404(Comments, id = comment_id) 
+    if request.method == 'GET':
+        serializer = CommentsSerializer(comment)
+        return Response(serializer.data)
+    elif request.method == 'PUT':
+        serializer = CommentsSerializer(comment, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status = status.HTTP_202_ACCEPTED)
+
     
 
 

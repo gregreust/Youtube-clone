@@ -14,7 +14,7 @@ const CommentsList = () => {
   //useEffect get all comments associated with videoId from backend
   useEffect(() => {
     fetchComments();
-  }, [comments]);
+  }, []);
 
   const fetchComments = async () => {
     try {
@@ -69,7 +69,7 @@ const CommentsList = () => {
           rows="3"
           onChange={(event) => setNewComment(event.target.value)}
         />
-        <input type="submit" />
+        <input type="submit" value="Post"/>
       </form>
       <ul>
         {comments &&

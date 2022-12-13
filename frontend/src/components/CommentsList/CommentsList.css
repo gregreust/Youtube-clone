@@ -4,3 +4,65 @@
     border-top-color: black;
     padding: 1rem;
 }
+
+.post-comment {
+    border-style: solid;
+    max-width: 67%;
+    margin-bottom: 10px;
+}
+.comment-list textarea{
+    width: 100%;
+    resize: none;
+    padding: 4px;
+    border: none;
+    outline: none;
+}
+
+.comment-list input {
+    background-color: steelblue;
+    color: white;
+    border: none;
+    font-weight:600;
+    letter-spacing: 1px;
+    font-family: inherit;
+    max-width: 120px;
+    padding: 0.5rem 0.5rem;
+    margin: 1rem;
+    cursor: pointer;
+    
+}
+
+.comment-list ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-list li {
+    border-top-style: solid;
+    margin-top: 1rem;
+}
+
+.comment {
+    font-size: 14px;
+}
+
+.comment .username{
+    font-weight: bold;
+}
+
+.comment .like-and-dislike {
+    display: flex;
+    flex-direction: row;
+}
+
+.comment .inactive{
+    
+}
+
+.comment .liked{
+    color: rgb(98, 232, 85);
+}
+
+.comment .disliked{
+    color: rgb(216, 67, 67)
+}
